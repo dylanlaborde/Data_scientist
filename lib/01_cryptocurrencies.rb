@@ -6,6 +6,21 @@ value = ["6558.07", "468.95", "0.487526", "762.84", "8.86", "85.26", "0.151268",
 
 marketplace = Hash[crypto.zip(value)]
 
-print marketplace
+#La ou les crypto qui ont la plus grosse valeur.
+def GetHigh(hash)
+    result = hash.max_by{|key, value| value.to_f}
+    print "valeur la plus haute est :  #{result}"
+end
+#print GetHigh(marketplace)
+#La ou les crypto qui ont la plus petite valeur.
+def GetMin(hash)
+    result = hash.min_by{|key, value| value}  
+    print "valeur la plus base est:  #{result}"
+end
 
- 
+
+print GetMin(marketplace)
+print GetMin(marketplace)
+
+#Les devises dont le cours est inférieur à 6000
+#La devise la plus chère parmi celles dont le cours est inférieur à 6000.
