@@ -8,15 +8,31 @@ marketplace = Hash[crypto.zip(value)]
 
 def init(m)
 
-puts "Bienvenue Sur le marketplace ! \n \n ***> Menu Principale !!!! \n \n***> Faites votre choix ! \n \n 1- La Cryptomonaie la plus chere ! \n 2- La Cryptomonaie la moins chere !\n "
-user_input = gets.chomp.to_i
+    puts "\n \n======================================<<  Bienvenue Sur le marketplace  >>======================================\n\n 
+              ------------------------------>> Menu Principale    <<------------------------------\n \n
+              ------------------------------>> Faites votre choix <<------------------------------\n \n
 
-    if user_input == 1
+                            ____________> 1- La Cryptomonaie la plus chere ! \n
+                            ____________> 2- La Cryptomonaie la moins chere ! \n
+                            ____________> 3- Cryptomonaie inférieur à 6000 \n
+                            ____________> 4 - plus elever en dessous de 6000 \n
+
+
+              ------------------------------>> Ou q/exit pour quiter  <<------------------------------
+            
+            "
+    user_input = gets.chomp
+
+    if user_input.to_i == 1
         GetHigh(m)
-    elsif user_input == 2
+    elsif user_input.to_i == 2
         GetMin(m)
+    elsif user_input.to_i == 3
+        Getinf(m)
+    elsif user_input === "q" || user_input === "Q" || user_input === "exit" || user_input === "EXIT" 
+        exit
     else
-        puts"recommencer"
+        puts"\n _______________________> recommencer <_____________________________"
     end
 end
 
@@ -24,27 +40,33 @@ end
 #La ou les crypto qui ont la plus grosse valeur.
 def GetHigh(hash)
     result = hash.max_by{|key, value| value.to_f}
-    print "valeur la plus haute est :  #{result} \n"
+    print "\n                     >  #{result[0]} affiche un prix de #{result[1]} \n \n"
 end
 #print GetHigh(marketplace)
 #La ou les crypto qui ont la plus petite valeur.
 def GetMin(hash)
     result = hash.min_by{|key, value| value}  
-    print "valeur la plus base est:  #{result} \n"
+    puts "\n ___________> #{result[0]} affice le prix le plus bas a seulement --------->>> #{result[1]} $  \n"
+    puts "\n"
 end
 #print GetMin(marketplace)
 #print GetMin(marketplace)
 #Les devises dont le cours est inférieur à 6000
 
 def Getinf(hash)
-    result = hash.select{|key, value| value.to_f < 6000}  
-    print "valeur nférieur à 6000 est:  #{result.length()}"
+    result = hash.select{|key, value| value.to_f < 6000}
+    puts "\n                     > il y a #{result.length()} Cryptomonaie sous les 6000 "
+    puts "\n                     >_____________________________________________________\n "
+    result.each {|key, value| print "\n                     > #{key} ------->>> Prix :  #{value}" }
+    puts "\n"
+
+    #print "inférieur à 6000 est : \n currency : #{result[0]} \n price #{result[0]}"
 end
-#Getinf(marketplace) 
 #La devise la plus chère parmi celles dont le cours est inférieur à 6000.
 
 def Getinf6000(hash)
     hash_search = hash.select{|key, value| value.to_f < 6000}  
     print GetHigh(hash_search)
 end
+
 init(marketplace)
