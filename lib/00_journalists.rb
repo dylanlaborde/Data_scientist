@@ -2,11 +2,13 @@ handle_tab = ["@jcunniet","@PaulLampon","@Aziliz31","@ssoumier","@marionsouzeau"
 
 #Combien y a-t-il de handle dans cette array ?
 
-def tab_length(tab)
+    def tab_length(tab)
+        return tab.length()
+    end
+#Quel est le handle le plus court de cette liste ?
+    def getHandleAscend(lg , tab)
+        result = tab.sort {|left, right| left.length <=> right.length}
+        print result
+    end
+getHandleAscend(tab_length(handle_tab),handle_tab )
 
-return tab.length()
-
-end
-
-
-print tab_length(handle_tab)
