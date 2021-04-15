@@ -6,16 +6,31 @@ value = ["6558.07", "468.95", "0.487526", "762.84", "8.86", "85.26", "0.151268",
 
 marketplace = Hash[crypto.zip(value)]
 
+def init(m)
+
+puts "Bienvenue Sur le marketplace ! \n \n ***> Menu Principale !!!! \n \n***> Faites votre choix ! \n \n 1- La Cryptomonaie la plus chere ! \n 2- La Cryptomonaie la moins chere !\n "
+user_input = gets.chomp.to_i
+
+    if user_input == 1
+        GetHigh(m)
+    elsif user_input == 2
+        GetMin(m)
+    else
+        puts"recommencer"
+    end
+end
+
+
 #La ou les crypto qui ont la plus grosse valeur.
 def GetHigh(hash)
     result = hash.max_by{|key, value| value.to_f}
-    print "valeur la plus haute est :  #{result}"
+    print "valeur la plus haute est :  #{result} \n"
 end
 #print GetHigh(marketplace)
 #La ou les crypto qui ont la plus petite valeur.
 def GetMin(hash)
     result = hash.min_by{|key, value| value}  
-    print "valeur la plus base est:  #{result}"
+    print "valeur la plus base est:  #{result} \n"
 end
 #print GetMin(marketplace)
 #print GetMin(marketplace)
@@ -32,5 +47,4 @@ def Getinf6000(hash)
     hash_search = hash.select{|key, value| value.to_f < 6000}  
     print GetHigh(hash_search)
 end
-
-Getinf6000(marketplace)
+init(marketplace)
