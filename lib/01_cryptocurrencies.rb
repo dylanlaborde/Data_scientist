@@ -19,12 +19,18 @@ def GetMin(hash)
 end
 #print GetMin(marketplace)
 #print GetMin(marketplace)
+#Les devises dont le cours est inférieur à 6000
 
 def Getinf(hash)
     result = hash.select{|key, value| value.to_f < 6000}  
     print "valeur nférieur à 6000 est:  #{result.length()}"
 end
-
 #Getinf(marketplace) 
-#Les devises dont le cours est inférieur à 6000
 #La devise la plus chère parmi celles dont le cours est inférieur à 6000.
+
+def Getinf6000(hash)
+    hash_search = hash.select{|key, value| value.to_f < 6000}  
+    print GetHigh(hash_search)
+end
+
+Getinf6000(marketplace)
